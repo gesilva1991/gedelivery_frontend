@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-custom-green {
+    background-color: #074E0A;
+  }
+  
+  
