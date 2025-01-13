@@ -1,9 +1,87 @@
-# Dependencies
-.psci_modules
-.spago
-bower_components
-node_modules
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Generated files
-.psci
-output
+# Diretórios do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dependências e pacotes
+/node_modules
+/.pnp
+.pnp.js
+
+# Diretório de build
+/build
+
+# Relatórios de depuração
+*.stackdump
+
+# Editor local e IDEs
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Cache do npm e yarn
+.npm
+.yarn/
+.pnp/
+.pnp.js
+.yarn-integrity
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
+
+# Test coverage
+/coverage
+
+# Configuração de ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache do parcel
+.cache/
+
+# Service worker e outros caches
+*.cache
+.cache/
+*.output
+**/build-manifest.json
+**/.next
+.next/
+
+# Outras pastas e arquivos não necessários
+.eslintcache
+.stylelintcache
+node_modules/
+
+# Configuração de runtime e logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/*.log
+*.gz
+.history/
+.editorconfig
+.prettiercache
+
+# Storybook
+storybook-static/
+*.stories.mdx
+*.stories.@(ts|tsx|js|jsx)
+__snapshots__/
+
+# Configuração local do projeto
+.local/
+.idea/
+.vscode/
+*.swp
