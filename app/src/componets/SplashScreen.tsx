@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import splash from './assets/splash.png'
+import splash from '../assets/splash.png'
 
 const SplashScreen: React.FC = () => {
   const [visible, setVisible] = useState(true);
@@ -16,8 +16,8 @@ const SplashScreen: React.FC = () => {
   if (!visible) return null;
 
   return (
-    <div className="flex items-center justify-center ">
-      <img src={splash} alt="Splash" className="h-screen   mb-4" />
+    <div className="bg-primary flex flex-col items-center justify-center h-screen w-full">
+      <img src={splash} alt="Splash" className="max-w-full max-h-full object-contain" />
     </div>
   );
 };

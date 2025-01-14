@@ -1,7 +1,6 @@
-import SplashScreen  from './SplashScreen.tsx'
-import LogInSignUp from './LogInSignUp.tsx'
+import SplashScreen  from './componets/SplashScreen.tsx'
+import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
 import React, { useState, useEffect } from 'react';
-
 
 
 const App: React.FC = () => {
@@ -18,10 +17,10 @@ const App: React.FC = () => {
 
   return (
     
-    <div className="bg-custom-green">
+    <div className="flex justify-center items-center ">
       <>
       {showSplash ? <SplashScreen /> : <LogInSignUp />}
-    </>
+      </>
     </div>
     
   );

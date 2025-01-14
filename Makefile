@@ -16,3 +16,5 @@ run:
 # npm build
 
 # npm deploy
+
+# ngrok http 5173
