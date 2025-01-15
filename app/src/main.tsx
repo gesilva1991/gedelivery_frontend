@@ -9,7 +9,7 @@ import { AuthProvider } from "./componets/autenticacao/AuthContext.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AuthProvider>
-    <BrowserRouter basename="/gedelivery_frontend">
+    <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/home" element={<Home />} />
