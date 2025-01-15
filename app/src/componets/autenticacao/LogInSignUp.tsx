@@ -17,12 +17,12 @@ const LoginPage: React.FC = () => {
 
   const handleLoginSuccess = async (credentialResponse: any) => {
     try {
-      console.log(credentialResponse)
+      console.log(credentialResponse.credential)
       const token = credentialResponse.credential;
 
       // Envia o token ao backend para validação
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/google-login/",
+        "http://192.168.1.6:8000/auth/google-login/",
         {
           id_token: token,
         }
