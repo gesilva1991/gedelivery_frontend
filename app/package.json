@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://gesilva1991.github.io/gedelivery_frontend/",
+  "homepage": "https://gesilva1991.github.io/gedelivery_frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
