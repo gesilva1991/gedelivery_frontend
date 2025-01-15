@@ -21,12 +21,15 @@ const LoginPage: React.FC = () => {
       const token = credentialResponse.credential;
 
       // Envia o token ao backend para validação
-      const response = await axios.post(
-        "https://192.168.1.6:8000/auth/google-login/",
-        {
-          id_token: token,
-        }
-      );
+      const axiosInstance = await axios.create({
+        baseURL: "https://192.168.1.6:8000",
+        httpsAgent: new (require('https')).Agent({ rejectUnauthorized: false }),
+      });
+      
+      // E use axiosInstance para fazer a requisição
+      const response = await axiosInstance.post("/auth/google-login/", {
+        id_token: token,
+      });
 
       setUser(response.data.user_info); // Salva os dados do usuário
       setError(null); // Limpa erros
