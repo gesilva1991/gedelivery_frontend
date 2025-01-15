@@ -22,7 +22,7 @@ const LoginPage: React.FC = () => {
 
       // Envia o token ao backend para validação
       const response = await axios.post(
-        "http://192.168.1.6:8000/auth/google-login/",
+        "https://192.168.1.6:8000/auth/google-login/",
         {
           id_token: token,
         }
