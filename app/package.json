@@ -6,7 +6,7 @@
   "homepage": "https://gesilva1991.github.io/gedelivery_frontend",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
