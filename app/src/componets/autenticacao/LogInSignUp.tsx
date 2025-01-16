@@ -29,6 +29,7 @@ const LoginPage: React.FC = () => {
         }
       );
 
+
       setUser(response.data.user_info); // Salva os dados do usuário
       setError(null); // Limpa erros
       login(response); // Define que o login foi feito com o Google
