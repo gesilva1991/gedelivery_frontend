@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import SplashScreen  from './componets/SplashScreen.tsx'
 import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
 import React, { useState, useEffect } from 'react';
@@ -43,3 +44,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+=======
+>>>>>>> 661668f (fix: update App)
