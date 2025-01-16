@@ -12,6 +12,7 @@ const App: React.FC = () => {
   const initializeGapi = () => {
     gapi.client.init({
       clientId: GOOGLE_CLIENT_ID,
+
       scope: '', // Defina o escopo necessário
     });
   };
