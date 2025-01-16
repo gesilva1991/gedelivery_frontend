@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import axios from "axios";
 import entrega from "../../assets/entrega.png";
+ 
 
 const LoginPage: React.FC = () => {
   const [user, setUser] = useState<{
@@ -21,15 +22,12 @@ const LoginPage: React.FC = () => {
       const token = credentialResponse.credential;
 
       // Envia o token ao backend para validação
-      const axiosInstance = await axios.create({
-        baseURL: "https://192.168.1.6:8000",
-        httpsAgent: new (require('https')).Agent({ rejectUnauthorized: false }),
-      });
-      
-      // E use axiosInstance para fazer a requisição
-      const response = await axiosInstance.post("/auth/google-login/", {
-        id_token: token,
-      });
+      const response = await axios.post(
+        "https://gedeliverybackend-production.up.railway.app/auth/google-login/",
+        {
+          id_token: token,
+        }
+      );
 
       setUser(response.data.user_info); // Salva os dados do usuário
       setError(null); // Limpa erros
@@ -57,6 +55,7 @@ const LoginPage: React.FC = () => {
           <GoogleLogin
             onSuccess={handleLoginSuccess}
             onError={handleLoginError}
+            
           />
           { user?.name}
           {error && <p className="text-red-500 mt-4">{error}</p>}
