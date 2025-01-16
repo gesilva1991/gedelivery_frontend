@@ -6,11 +6,11 @@
   "homepage": "https://gesilva1991.github.io/gedelivery_frontend",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": ""
+    "deploy": "tsc -b && vite build"
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
