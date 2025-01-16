@@ -22,7 +22,7 @@ const LoginPage: React.FC = () => {
 
       // Envia o token ao backend para validação
       const axiosInstance = await axios.create({
-        baseURL: "https://127.0.0.1",
+        baseURL: "https://gedeliverybackend-production.up.railway.app",
         httpsAgent: new (require('https')).Agent({ rejectUnauthorized: false }),
       });
       
