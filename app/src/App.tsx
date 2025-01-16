@@ -3,7 +3,7 @@ import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
 import React, { useState, useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
-const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+const GOOGLE_CLIENT_ID = import.meta.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 
 const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -12,7 +12,6 @@ const App: React.FC = () => {
   const initializeGapi = () => {
     gapi.client.init({
       clientId: GOOGLE_CLIENT_ID,
-
       scope: '', // Defina o escopo necessário
     });
   };
