@@ -3,13 +3,15 @@ import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
 import React, { useState, useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+
 const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   // Função para inicializar o Google API
   const initializeGapi = () => {
     gapi.client.init({
-      clientId: 'YOUR_CLIENT_ID', // Substitua por seu CLIENT_ID
+      clientId: GOOGLE_CLIENT_ID,
       scope: '', // Defina o escopo necessário
     });
   };
