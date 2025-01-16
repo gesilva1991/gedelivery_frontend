@@ -3,8 +3,6 @@ import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
 import React, { useState, useEffect } from 'react';
 import { gapi } from 'gapi-script';
 
-
-
 const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
 
