@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Navigation />
-      <h1>Bem-vindo ao Home!</h1>
+      <h1>Bem-vindo! Obrigado por acessar Lay</h1>
     </div>
   );
 };
