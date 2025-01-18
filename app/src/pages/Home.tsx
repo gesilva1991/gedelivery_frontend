@@ -4,19 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from '../componets/navbar';
 
 const Home: React.FC = () => {
-  const { user } = useAuth();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      // Redireciona para a página de login caso o usuário não esteja autenticado
-      navigate('/');
-    }
-  }, [user, navigate]);
+
+
 
   return (
     <div>
-      <Navigation />
       <h1>Bem-vindo! Obrigado por acessar Lay</h1>
     </div>
   );
