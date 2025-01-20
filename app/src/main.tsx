@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import Home from "./pages/Home.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./componets/autenticacao/AuthContext.tsx";
+import { CheckToken } from "./pages/CheckToken.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/check-token" element={<CheckToken />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

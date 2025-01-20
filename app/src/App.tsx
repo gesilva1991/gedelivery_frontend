@@ -1,43 +1,96 @@
-import SplashScreen  from './componets/SplashScreen.tsx'
-import LogInSignUp from './componets/autenticacao/LogInSignUp.tsx'
-import React, { useState, useEffect } from 'react';
-import { gapi } from 'gapi-script';
+import { useEffect, useState } from 'react';
+import LoginWithGoogle from './componets/autenticacao/LogInSignUp.tsx';
+import { useAuth } from "./componets/autenticacao/AuthContext.tsx";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import Home from './pages/Home.tsx';
 
-const GOOGLE_CLIENT_ID = import.meta.env.REACT_APP_GOOGLE_CLIENT_ID || "";
 
-const App: React.FC = () => {
-  const [showSplash, setShowSplash] = useState(true);
 
-  // Função para inicializar o Google API
-  const initializeGapi = () => {
-    gapi.client.init({
-      clientId: GOOGLE_CLIENT_ID,
-      scope: '', // Defina o escopo necessário
-    });
-  };
 
+const App = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState<string | null>(null);
+  
   useEffect(() => {
-    // Carrega o script da API do Google e inicializa o cliente
-    gapi.load('client:auth2', initializeGapi);
-  }, []); // O array vazio garante que isso seja feito apenas uma vez
 
-  useEffect(() => {
-    // Exibe a splash screen por 3 segundos
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 3000);
+    const checkCookie = async () => {
+      const url = 'http://127.0.0.1:8000/auth/check-cookie/';
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      
+      try {
+        const response = await fetch(url, options);
+        const data = await response.json();
 
-    return () => clearTimeout(timer); // Limpa o timer
-  }, []);
+        // Verifica se a resposta foi bem-sucedida
+        if (!response.ok) {
+          throw new Error(`Erro na requisição: ${response.statusText}`);
+        }
+
+        
+
+        // Verifica se há token no cookie
+        if (!data){
+
+        }
+        
+        setData(data); // Atualiza o estado com os dados da resposta
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message); // Atualiza o estado com a mensagem de erro
+        } else {
+          setError('Erro desconhecido'); // Caso o erro não seja uma instância de Error
+        }
+      }
+    }
+
+    
+
+    const fetchUserData = async () => {
+      
+  
+      
+  
+      
+      // Verifica se há um token de acesso na URL após o redirecionamento
+      const params = new URLSearchParams(window.location.hash.replace('#', '?'));
+      const accessToken = params.get('access_token');
+
+      if (accessToken) {
+        // Exemplo de chamada para obter informações do usuário
+        try {
+          const response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+          
+          const data = await response.json();
+          // setUser(data); // Armazena os dados do usuário no estado
+        } catch (error) {
+          console.error('Erro ao buscar dados do usuário', error);
+        }
+      } else {
+        // Se não houver access_token, provavelmente o login ainda não foi feito
+        console.log('Nenhum access_token encontrado na URL');
+      }
+    }
+    checkCookie();
+    fetchUserData()
+
+  }, []); // Use o array vazio para que isso ocorra apenas uma vez, após o login.
 
   return (
-    
-    <div className="flex justify-center items-center ">
-      <>
-      {showSplash ? <SplashScreen /> : <LogInSignUp />}
-      </>
+    <GoogleOAuthProvider clientId="38639244049-4j8el60ek7b0qftigl86qmru2e7j7s4h.apps.googleusercontent.com">
+    <div className="App">
+      {(!data) ? (<LoginWithGoogle />  ) : (<Home />)}
+        
     </div>
-    
+    </GoogleOAuthProvider>
   );
 };
 
